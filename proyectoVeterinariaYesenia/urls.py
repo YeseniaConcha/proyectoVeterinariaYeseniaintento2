@@ -15,16 +15,39 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from veterinariaAPP.views import index, VeterinariaDataView, crearPaciente, eliminarPaciente, editarPaciente
+from vaterinariaAPP import views 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
-    path('veterinaria/', VeterinariaDataView),
-    path('agregar/', crearPaciente),
-    path('eliminarPaciente/<int:id>', eliminarPaciente),
-    path('editarPaciente/<int:id>', editarPaciente),
-    # path('dueño/', DueñoDataView),
-    # path('agregar/', crearDueño), 
-    # path('eliminarDueño/<int:id>', eliminarDueño),
-    # path('editarDueño/<int:id>', editarDueño), 
+    path('', views.index),
+    path('veterinaria/', views.VeterinariaDataView),
+    path('agregar/', views.crearPaciente),
+    path('eliminarPaciente/<int:id>', views.eliminarPaciente),
+    path('editarPaciente/<int:id>', views.editarPaciente),
+
+    path('dueño/', views.DuenoDataView),
+    path('agregarDueño/', views.crearDueno),
+    path('eliminarDueño/<int:id>', views.eliminarDueno),
+    path('editarDueño/<int:id>', views.editarDueno), 
+
+    path('mascotas/', views.MascotaDataView),
+    path('editarMascota/<int:id>', views.editarMascota),
+    path('eliminarMascota/<int:id>', views.eliminarMascota),
+    path('agregarMascota/', views.crearMascota),
+
+    path('cirugia/', views.CirugiaDataView),
+    path('editarCirugia/<int:id>', views.editarcirugia),
+    path('eliminarCirugia/<int:id>', views.eliminarcirugia),
+    path('agregarCirugia/', views.crearcirugia),
+
+    path('estetica/', views.EsteticaDataView),
+    path('editarEstetica/<int:id>', views.editarestetica),
+    path('eliminarEstetica/<int:id>', views.eliminarestetica),
+    path('agregarEstetica/', views.crearEstetica),
+
+    path('vacuna/', views.VacunaDataView),
+    path('editarCirugia/<int:id>', views.editarvacuna),
+    path('eliminarCirugia/<int:id>', views.eliminarvacuna),
+    path('agregarVacuna/', views.crearvacuna),
+
+
 ]

@@ -34,8 +34,12 @@ class Veterinaria(models.Model):
     observacion = models.CharField(max_length=100)
     valor = models.IntegerField()
 
+    class Meta:
+        verbose_name = "nombre diagnostico"
+        verbose_name_plural = "nombre diagnosticos"
+
     def __str__(self) -> str:
-        return self.nombrePaciente
+        return self.diagnostico
 
 class Estetica(models.Model):
     nombrePaciente= models.ForeignKey(Mascota, on_delete=models.CASCADE)
@@ -47,11 +51,11 @@ class Estetica(models.Model):
     valor = models.IntegerField() 
 
     class Meta:
-        verbose_name = "nombre paciente"
-        verbose_name_plural = "nombre pacientes"
+        verbose_name = "nombre observacione"
+        verbose_name_plural = "nombre observaciones"
 
     def __str__(self):
-        return self.nombrePaciente
+        return self.observaciones
 
 class Vacunas(models.Model):
     nombrePaciente = models.ForeignKey(Mascota, on_delete=models.CASCADE)
@@ -63,11 +67,11 @@ class Vacunas(models.Model):
     valor = models.IntegerField() 
 
     class Meta:
-        verbose_name = "nombre paciente"
-        verbose_name_plural = "nombre pacientes"
+        verbose_name = "nombre motivo"
+        verbose_name_plural = "nombre motivos"
 
     def __str__(self):
-        return self.nombrePaciente
+        return self.motivo
 
 class Cirugias(models.Model):
     nombrePaciente = models.ForeignKey(Mascota, on_delete=models.CASCADE)
@@ -79,9 +83,9 @@ class Cirugias(models.Model):
     valor = models.IntegerField() 
 
     class Meta:
-        verbose_name = "nombre paciente"
-        verbose_name_plural = "nombre pacientes"
+        verbose_name = "nombre tratamiento"
+        verbose_name_plural = "nombre tratamientos"
 
     def __str__(self):
-        return self.nombrePaciente
+        return self.tratamiento
 

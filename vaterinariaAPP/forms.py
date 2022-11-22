@@ -89,26 +89,26 @@ class VeterinariaForm(ModelForm):
 
 class DuenoForm(forms.Form):
 
-    nombre = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    nombreDueño = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     edad = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     
-    def clean_nombre(self):
-        nombre = self.cleaned_data.get['nombre']
-        if len(nombre) < 4:
-            raise forms.ValidationError("El nombre debe tener al menos 4 caracteres")
-        return nombre
+    # def clean_nombre(self):
+    #     nombre = self.cleaned_data.get['nombre']
+    #     if len(nombre) < 4:
+    #         raise forms.ValidationError("El nombre debe tener al menos 4 caracteres")
+    #     return nombre
 
 class DuenoForm(ModelForm):
     class Meta:
         model = Dueno
         fields = '__all__'
         
-    nombre = forms.CharField(max_length=50)
+    nombreDueño = forms.CharField(max_length=50)
     edad = forms.IntegerField()    
 
 class MascotaForm(forms.Form):
-    Mascota = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    nombre = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     dueño = forms.ModelChoiceField(queryset=Dueno.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
     edad = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     descripcion = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -118,14 +118,14 @@ class MascotaForm(ModelForm):
         model = Mascota
         fields = '__all__'
 
-    Mascota = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    nombre = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     dueño = forms.ModelChoiceField(queryset=Dueno.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
     edad = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     descripcion = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
 
 class EsteticaForm(forms.Form):
 
-    nombre = forms.ModelChoiceField(queryset=Mascota.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
+    nombrePaciente = forms.ModelChoiceField(queryset=Mascota.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
     FechaAtencion = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control'}))
     motivo = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     diagnostico = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -138,7 +138,7 @@ class EsteticaForm(ModelForm):
         model = Estetica
         fields = '__all__'
 
-    nombre = forms.ModelChoiceField(queryset=Mascota.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
+    nombrePaciente = forms.ModelChoiceField(queryset=Mascota.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
     FechaAtencion = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control'}))
     motivo = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     diagnostico = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -148,7 +148,7 @@ class EsteticaForm(ModelForm):
 
 class VacunaForm(forms.Form):
 
-    nombre = forms.ModelChoiceField(queryset=Mascota.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
+    nombrePaciente = forms.ModelChoiceField(queryset=Mascota.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
     FechaAtencion = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control'}))
     motivo = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     diagnostico = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -161,7 +161,7 @@ class VacunaForm(ModelForm):
         model = Vacunas
         fields = '__all__'
 
-    nombre = forms.ModelChoiceField(queryset=Mascota.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
+    nombrePaciente = forms.ModelChoiceField(queryset=Mascota.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
     FechaAtencion = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control'}))
     motivo = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     diagnostico = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -171,7 +171,7 @@ class VacunaForm(ModelForm):
 
 class CirugiaForm(forms.Form):
 
-    nombree = forms.ModelChoiceField(queryset=Mascota.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
+    nombre = forms.ModelChoiceField(queryset=Mascota.objects.all(),widget=forms.Select(attrs={'class': 'form-control'}))
     FechaAtencion = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control'}))
     motivo = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     diagnostico = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
